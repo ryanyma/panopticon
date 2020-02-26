@@ -1,26 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-
-const NAVIGATIONS = [
-  'home',
-  'about',
-  'manifesto',
-  'writing',
-  'contact',
-  'privacy policy',
-  'a ryan + ryan prod',
-];
-
-const PROJECTS = [
-  "NETFLIX, BUT IT'S A DATING APP",
-  'SPOTIFY OPPOSITE RECOMMENDATIONS',
-  'FACEBOOK BEFORE THE BAD SHIT',
-  'HOW BAD IS CORONAVIRUS, REALLY?',
-  'MAKE MY PAPERS LONGER',
-  'EDIT WIKIPEDIA TO SAY WHATEVER I WANT',
-  'GET A STRANGER TO CALL ME AND WAKE ME UP',
-];
+import { PROJECTS, NAVIGATIONS } from '../constants';
 
 const AppLayout = styled.div`
   display: grid;
@@ -63,8 +44,8 @@ const FooterListItem = styled.li`
 `;
 
 const ProjectListItem = styled.ul`
-  padding: 10px;
-  margin: 25px;
+  font-size: 20px;
+  padding: 5px;
   color: black;
   text-decoration: none;
   display: block;
@@ -108,7 +89,7 @@ function Home() {
     <AppLayout>
       <StyledHeader>
         <StyledHGroup>
-          <h1>panoticon</h1>
+          <h1>panopticon</h1>
           <p>{new Date().toLocaleString()}</p>
         </StyledHGroup>
       </StyledHeader>
