@@ -1,16 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
-import logo from './logo.svg';
 import { Link } from 'react-router-dom';
-import './App.css';
 
-const NAVIGATION = [
+const NAVIGATIONS = [
+  'home',
   'about',
   'manifesto',
   'writing',
   'contact',
   'privacy policy',
   'a ryan + ryan prod',
+];
+
+const PROJECTS = [
+  "NETFLIX, BUT IT'S A DATING APP",
+  'SPOTIFY OPPOSITE RECOMMENDATIONS',
+  'FACEBOOK BEFORE THE BAD SHIT',
+  'HOW BAD IS CORONAVIRUS, REALLY?',
+  'MAKE MY PAPERS LONGER',
+  'EDIT WIKIPEDIA TO SAY WHATEVER I WANT',
+  'GET A STRANGER TO CALL ME AND WAKE ME UP',
 ];
 
 const AppLayout = styled.div`
@@ -34,16 +43,33 @@ const FooterList = styled.ul`
   width: 100%;
   list-style: none;
   padding-left: 0px;
+  display: inline;
 `;
 
-const paddingLeft = 'padding-left: 10px';
+const ProjectList = styled.ul`
+  width: 100%;
+  list-style: none;
+`;
 
-const SideBarListItem = styled.li`
-  padding: 2px;
+const FooterListItem = styled.li`
+  padding: 10px;
+  margin: 25px;
+  color: black;
   text-decoration: none;
-  ${paddingLeft};
+  display: inline;
   &:hover {
-    background: #3e313c;
+    text-decoration: underline;
+  }
+`;
+
+const ProjectListItem = styled.ul`
+  padding: 10px;
+  margin: 25px;
+  color: black;
+  text-decoration: none;
+  display: block;
+  &:hover {
+    text-decoration: underline;
   }
 `;
 
@@ -67,11 +93,17 @@ const StyledLink = styled(Link)`
 
 const navigation = name => (
   <StyledLink key={`names-${name}`} to={`/${name}`}>
-    <SideBarListItem># {name}</SideBarListItem>
+    <FooterListItem>{name}</FooterListItem>
   </StyledLink>
 );
 
-function App() {
+const project = name => (
+  <StyledLink key={`names-${name}`} to={`/${name}`}>
+    <ProjectListItem>{name}</ProjectListItem>
+  </StyledLink>
+);
+
+function Home() {
   return (
     <AppLayout>
       <StyledHeader>
@@ -80,14 +112,14 @@ function App() {
           <p>{new Date().toLocaleString()}</p>
         </StyledHGroup>
       </StyledHeader>
-      {/* <ProjectWrapper>
-        <p>yo</p>
-      </ProjectWrapper> */}
+      <ProjectWrapper>
+        <ProjectList>{PROJECTS.map(p => project(p))}</ProjectList>
+      </ProjectWrapper>
       <FooterWrapper>
-        <FooterList>{NAVIGATION.map(n => navigation(n))}</FooterList>
+        <FooterList>{NAVIGATIONS.map(n => navigation(n))}</FooterList>
       </FooterWrapper>
     </AppLayout>
   );
 }
 
-export default App;
+export default Home;
