@@ -17,7 +17,7 @@ const StyledHeader = styled.header`
   h1 {
     font-family: 'IBM Plex Serif', serif;
     font-weight: 600;
-    font-size: 36px;
+    font-size: 2.5rem;
   }
   margin-bottom: 24px;
   margin-top: auto;
@@ -48,7 +48,7 @@ const ProjectList = styled.ul`
 `;
 
 const ProjectListItem = styled.ul`
-  font-size: 36px;
+  font-size: 2rem;
   color: black;
   padding: 5px;
   text-decoration: none;
@@ -81,6 +81,7 @@ const FooterListItem = styled.li`
   &:hover {
     text-decoration: underline;
   }
+  margin: 0px 10px 0px 10px;
 `;
 
 const BoldFooterListItem = styled(FooterListItem)`
@@ -91,64 +92,29 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
-const navigation = (name, pageUrl) => {
-  if (pageUrl.substr(1) === name || (pageUrl === '/' && name === 'home')) {
+const StyledExternalLink = styled.a`
+  text-decoration: none;
+`;
+
+const navigation = (n, pageUrl) => {
+  if (pageUrl.slice(1) === n.url) {
     return (
-      <StyledLink key={`${name}`} to={`/${name}`}>
-        <BoldFooterListItem>{name}</BoldFooterListItem>
+      <StyledLink key={`${n.name}`} to={`/${n.url}`}>
+        <BoldFooterListItem>{n.name}</BoldFooterListItem>
       </StyledLink>
     );
   }
-
-  if (name === 'home') {
-    return (
-      <StyledLink key={`${name}`} to="/">
-        <FooterListItem>{name}</FooterListItem>
-      </StyledLink>
-    );
-  }
-
-  if (name === 'privacy policy') {
-    if (pageUrl.split('+').length === 2) {
-      return (
-        <StyledLink key={`${name}`} to="/privacy+policy">
-          <BoldFooterListItem>{name}</BoldFooterListItem>
-        </StyledLink>
-      );
-    }
-    return (
-      <StyledLink key={`${name}`} to="/privacy+policy">
-        <FooterListItem>{name}</FooterListItem>
-      </StyledLink>
-    );
-  }
-
-  if (name === 'a kai + lin production') {
-    if (pageUrl.slice(1) === 'production' && name[-1] === pageUrl[-1]) {
-      return (
-        <StyledLink key={`${name}`} to="/privacy+policy">
-          <BoldFooterListItem>{name}</BoldFooterListItem>
-        </StyledLink>
-      );
-    }
-    return (
-      <StyledLink key={`${name}`} to="/production">
-        <FooterListItem>{name}</FooterListItem>
-      </StyledLink>
-    );
-  }
-
   return (
-    <StyledLink key={`${name}`} to={`/${name}`}>
-      <FooterListItem>{name}</FooterListItem>
+    <StyledLink key={`${n.name}`} to={`/${n.url}`}>
+      <FooterListItem>{n.name}</FooterListItem>
     </StyledLink>
   );
 };
 
-const project = name => (
-  <StyledLink key={`${name}`} to={`/${name}`}>
-    <ProjectListItem>{name}</ProjectListItem>
-  </StyledLink>
+const project = p => (
+  <StyledExternalLink href={`${p.url}`}>
+    <ProjectListItem>{p.name}</ProjectListItem>
+  </StyledExternalLink>
 );
 
 function Home() {

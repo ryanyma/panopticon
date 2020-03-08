@@ -1,14 +1,41 @@
 export const NAVIGATIONS = [
-  'home',
-  'about',
-  'manifesto',
-  'writing',
-  'contact',
-  'privacy policy',
-  'a kai + lin production',
+  {
+    name: 'home',
+    url: 'home',
+  },
+  {
+    name: 'about',
+    url: 'about',
+  },
+  {
+    name: 'manifesto',
+    url: 'manifesto',
+  },
+  {
+    name: 'writing',
+    url: 'writing',
+  },
+  {
+    name: 'contact',
+    url: 'contact',
+  },
+  {
+    name: 'privacy policy',
+    url: 'privacy+policy',
+  },
+  {
+    name: 'a kai + lin production',
+    url: 'production',
+  },
 ];
 
 export const PROJECTS = [
-  'RELEASING: 3/12/20 12:00:00 AM',
-  'MAKE YOUR BROWSER B&W',
+  {
+    name: 'RELEASING: 3/12/20 12:00:00 AM',
+    url: '/',
+  },
+  {
+    name: 'MAKE YOUR BROWSER B&W',
+    url: 'https://www.google.com/',
+  },
 ];
