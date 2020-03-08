@@ -1,7 +1,7 @@
 export const NAVIGATIONS = [
   {
     name: 'home',
-    url: 'home',
+    url: '',
   },
   {
     name: 'about',

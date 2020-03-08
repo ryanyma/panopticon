@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Redirect, Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { PROJECTS, NAVIGATIONS } from '../constants';
 
 const AppLayout = styled.div`
