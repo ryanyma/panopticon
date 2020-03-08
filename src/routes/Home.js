@@ -17,7 +17,7 @@ const StyledHeader = styled.header`
   h1 {
     font-family: 'IBM Plex Serif', serif;
     font-weight: 600;
-    font-size: 36px;
+    font-size: 2.5rem;
   }
   margin-bottom: 24px;
   margin-top: auto;
@@ -48,7 +48,7 @@ const ProjectList = styled.ul`
 `;
 
 const ProjectListItem = styled.ul`
-  font-size: 36px;
+  font-size: 2rem;
   color: black;
   padding: 5px;
   text-decoration: none;
@@ -81,6 +81,7 @@ const FooterListItem = styled.li`
   &:hover {
     text-decoration: underline;
   }
+  margin: 0px 10px 0px 10px;
 `;
 
 const StyledLink = styled(Link)`
