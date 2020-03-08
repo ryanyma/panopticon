@@ -88,16 +88,20 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
+const StyledExternalLink = styled.a`
+  text-decoration: none;
+`;
+
 const navigation = name => (
   <StyledLink key={`names-${name}`} to={`/${name}`}>
     <FooterListItem>{name}</FooterListItem>
   </StyledLink>
 );
 
-const project = name => (
-  <StyledLink key={`names-${name}`} to={`/${name}`}>
-    <ProjectListItem>{name}</ProjectListItem>
-  </StyledLink>
+const project = p => (
+  <StyledExternalLink href={`${p.url}`}>
+    <ProjectListItem>{p.name}</ProjectListItem>
+  </StyledExternalLink>
 );
 
 function Home() {

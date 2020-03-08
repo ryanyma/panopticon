@@ -9,6 +9,12 @@ export const NAVIGATIONS = [
 ];
 
 export const PROJECTS = [
-  'RELEASING: 3/12/20 12:00:00 AM',
-  'MAKE YOUR BROWSER B&W',
+  {
+    name: 'RELEASING: 3/12/20 12:00:00 AM',
+    url: '/',
+  },
+  {
+    name: 'MAKE YOUR BROWSER B&W',
+    url: 'https://www.google.com/',
+  },
 ];
