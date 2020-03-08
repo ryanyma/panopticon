@@ -6,7 +6,7 @@ import { PROJECTS, NAVIGATIONS } from '../constants';
 const AppLayout = styled.div`
   display: grid;
   grid-template-columns: 1fr 75% 1fr;
-  grid-template-rows: 15% 1fr 15%;
+  grid-template-rows: 18% 1fr 15%;
   width: 100vw;
   height: 100vh;
 `;
@@ -14,44 +14,17 @@ const StyledHeader = styled.header`
   text-align: center;
   grid-column: 2;
   grid-row: 1;
+  h1 {
+    font-family: 'IBM Plex Serif', serif;
+    font-weight: 600;
+    font-size: 36px;
+  }
+  margin-bottom: 24px;
+  margin-top: auto;
 `;
 
 const StyledHGroup = styled.hgroup`
   position: relative;
-`;
-
-const FooterList = styled.ul`
-  width: 100%;
-  list-style: none;
-  padding-left: 0px;
-  display: inline;
-`;
-
-const ProjectList = styled.ul`
-  width: 100%;
-  list-style: none;
-`;
-
-const FooterListItem = styled.li`
-  padding: 10px;
-  margin: 25px;
-  color: black;
-  text-decoration: none;
-  display: inline;
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-const ProjectListItem = styled.ul`
-  font-size: 20px;
-  padding: 5px;
-  color: black;
-  text-decoration: none;
-  display: block;
-  &:hover {
-    text-decoration: underline;
-  }
 `;
 
 const ProjectWrapper = styled.div`
@@ -59,13 +32,55 @@ const ProjectWrapper = styled.div`
   grid-column: 2;
   margin: 0 auto;
   max-width: 100%;
-  overflow: hidden;
+  overflow: scroll;
+  scrollbar-width: none;
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
   position: relative;
+  text-align: center;
+`;
+
+const ProjectList = styled.ul`
+  width: 100%;
+  list-style: none;
+`;
+
+const ProjectListItem = styled.ul`
+  font-size: 36px;
+  color: black;
+  padding: 5px;
+  text-decoration: none;
+  display: block;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const FooterWrapper = styled.div`
   grid-row: 3;
   grid-column: 2;
+  margin-top: 36px;
+`;
+
+const FooterList = styled.ul`
+  width: 75%;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 auto;
+`;
+
+const FooterListItem = styled.li`
+  color: black;
+  text-decoration: none;
+  padding-inline-start: 0px;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const StyledLink = styled(Link)`
