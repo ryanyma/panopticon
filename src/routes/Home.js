@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Redirect, Link, useLocation } from 'react-router-dom';
 import { PROJECTS, NAVIGATIONS } from '../constants';
 
 const AppLayout = styled.div`
@@ -27,7 +27,7 @@ const StyledHGroup = styled.hgroup`
   position: relative;
 `;
 
-const ProjectWrapper = styled.div`
+const Wrapper = styled.div`
   grid-row: 2;
   grid-column: 2;
   margin: 0 auto;
@@ -83,23 +83,78 @@ const FooterListItem = styled.li`
   }
 `;
 
+const BoldFooterListItem = styled(FooterListItem)`
+  font-weight: bold;
+`;
+
 const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
-const navigation = name => (
-  <StyledLink key={`names-${name}`} to={`/${name}`}>
-    <FooterListItem>{name}</FooterListItem>
-  </StyledLink>
-);
+const navigation = (name, pageUrl) => {
+  if (pageUrl.substr(1) === name || (pageUrl === '/' && name === 'home')) {
+    return (
+      <StyledLink key={`${name}`} to={`/${name}`}>
+        <BoldFooterListItem>{name}</BoldFooterListItem>
+      </StyledLink>
+    );
+  }
+
+  if (name === 'home') {
+    return (
+      <StyledLink key={`${name}`} to="/">
+        <FooterListItem>{name}</FooterListItem>
+      </StyledLink>
+    );
+  }
+
+  if (name === 'privacy policy') {
+    if (pageUrl.split('+').length === 2) {
+      return (
+        <StyledLink key={`${name}`} to="/privacy+policy">
+          <BoldFooterListItem>{name}</BoldFooterListItem>
+        </StyledLink>
+      );
+    }
+    return (
+      <StyledLink key={`${name}`} to="/privacy+policy">
+        <FooterListItem>{name}</FooterListItem>
+      </StyledLink>
+    );
+  }
+
+  if (name === 'a kai + lin production') {
+    if (pageUrl.slice(1) === 'production' && name[-1] === pageUrl[-1]) {
+      return (
+        <StyledLink key={`${name}`} to="/privacy+policy">
+          <BoldFooterListItem>{name}</BoldFooterListItem>
+        </StyledLink>
+      );
+    }
+    return (
+      <StyledLink key={`${name}`} to="/production">
+        <FooterListItem>{name}</FooterListItem>
+      </StyledLink>
+    );
+  }
+
+  return (
+    <StyledLink key={`${name}`} to={`/${name}`}>
+      <FooterListItem>{name}</FooterListItem>
+    </StyledLink>
+  );
+};
 
 const project = name => (
-  <StyledLink key={`names-${name}`} to={`/${name}`}>
+  <StyledLink key={`${name}`} to={`/${name}`}>
     <ProjectListItem>{name}</ProjectListItem>
   </StyledLink>
 );
 
 function Home() {
+  const locationObj = useLocation();
+  const pageUrl = locationObj.pathname;
+
   return (
     <AppLayout>
       <StyledHeader>
@@ -108,11 +163,43 @@ function Home() {
           <p>{new Date().toLocaleString()}</p>
         </StyledHGroup>
       </StyledHeader>
-      <ProjectWrapper>
-        <ProjectList>{PROJECTS.map(p => project(p))}</ProjectList>
-      </ProjectWrapper>
+      {pageUrl === '/' || pageUrl === '/home' ? (
+        <Wrapper>
+          <ProjectList>{PROJECTS.map(p => project(p))}</ProjectList>
+        </Wrapper>
+      ) : null}
+      {pageUrl === '/about' ? (
+        <Wrapper>
+          <p> sup bru</p>
+        </Wrapper>
+      ) : null}
+      {pageUrl === '/manifesto' ? (
+        <Wrapper>
+          <p> sup bru</p>
+        </Wrapper>
+      ) : null}
+      {pageUrl === '/writing' ? (
+        <Wrapper>
+          <p> sup bru</p>
+        </Wrapper>
+      ) : null}
+      {pageUrl === '/contact' ? (
+        <Wrapper>
+          <p> sup bru</p>
+        </Wrapper>
+      ) : null}
+      {pageUrl === '/privacy+policy' ? (
+        <Wrapper>
+          <p> sup bru</p>
+        </Wrapper>
+      ) : null}
+      {pageUrl === '/production' ? (
+        <Wrapper>
+          <p> sup bru</p>
+        </Wrapper>
+      ) : null}
       <FooterWrapper>
-        <FooterList>{NAVIGATIONS.map(n => navigation(n))}</FooterList>
+        <FooterList>{NAVIGATIONS.map(n => navigation(n, pageUrl))}</FooterList>
       </FooterWrapper>
     </AppLayout>
   );
